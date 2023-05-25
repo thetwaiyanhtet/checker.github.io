@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <title>Home</title>
+</head>
+<body class="text-white bg-[url('../CheckerGame.github.io-main/img/chessBG-transformed.jpeg')] bg-no-repeat bg-cover">
+  <main>
+    <div class="flex items-center justify-center w-full min-h-[50vh]">
+      <img src="../CheckerGame.github.io-main/img/logo.png" alt="..." width="80px">
+      <div class="">
+        <h4>Welcome to</h4>
+        <h2 class="font-serif text-2xl">CHECKER GAME</h2>
+      </div>
+    </div>
+    <div>
+      <ul class="uppercase font-mono flex flex-col items-center justify-center space-y-3">
+        <a href="../CheckerGame.github.io-main/defaultTheme.html"><li><p class="text sound">play game</p></li></a>
+        <a href=""><li><p class="text sound">customize theme</p></li></a>
+        <a href="setting.html"><li><p class="text sound">setting</p></li></a>
+        <a href="about.html"><li><p class="text sound">about</p></li></a>
+        <a href=""><li><p class="text sound" id="exit">exit game</p></li></a>
+      </ul>
+    </div>
+  </main>
+  <audio src="../CheckerGame.github.io-main/rclick-13693.mp3" class="audio"></audio>
+  <script>
+    let audio = document.querySelector(".audio");
+    let sound = document.querySelectorAll(".sound");
+    sound.forEach((s)=>{
+      s.addEventListener("focus",()=>{
+      audio.play();
+      console.log('ok');
+    });
+    })
+  </script>
+</body>
+</html>

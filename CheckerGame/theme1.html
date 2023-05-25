@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="theme2.css">
+</head>
+<body>
+  
+  <div class="chess-board">
+    <div class="row">
+      <div class="cell white-cell" id="8,1"></div>
+      <div class="cell red-cell" id="8,2"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="8,3"></div>
+      <div class="cell red-cell" id="8,4"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="8,5"></div>
+      <div class="cell red-cell" id="8,6"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="8,7"></div>
+      <div class="cell red-cell" id="8,8"><div class="checker black-checker" draggable="true"></div></div>
+    </div>
+    <div class="row">
+      <div class="cell red-cell" id="7,1"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="7,2"></div>
+      <div class="cell red-cell" id="7,3"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="7,4"></div>
+      <div class="cell red-cell" id="7,5"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="7,6"></div>
+      <div class="cell red-cell" id="7,7"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="7,8"></div>
+    </div>
+    <div class="row">
+      <div class="cell white-cell" id="6,1"></div>
+      <div class="cell red-cell" id="6,2"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="6,3"></div>
+      <div class="cell red-cell" id="6,4"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="6,5"></div>
+      <div class="cell red-cell" id="6,6"><div class="checker black-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="6,7"></div>
+      <div class="cell red-cell" id="6,8"><div class="checker black-checker" draggable="true"></div></div>
+    </div>
+    <div class="row">
+      <div class="cell red-cell" id="5,1"></div>
+      <div class="cell white-cell" id="5,2"></div>
+      <div class="cell red-cell" id="5,3"></div>
+      <div class="cell white-cell" id="5,4"></div>
+      <div class="cell red-cell" id="5,5"></div>
+      <div class="cell white-cell" id="5,6"></div>
+      <div class="cell red-cell" id="5,7"></div>
+      <div class="cell white-cell" id="5,8"></div>
+    </div>
+    <div class="row">
+      <div class="cell white-cell" id="4,1"></div>
+      <div class="cell red-cell" id="4,2"></div>
+      <div class="cell white-cell" id="4,3"></div>
+      <div class="cell red-cell" id="4,4"></div>
+      <div class="cell white-cell" id="4,5"></div>
+      <div class="cell red-cell" id="4,6"></div>
+      <div class="cell white-cell" id="4,7"></div>
+      <div class="cell red-cell" id="4,8"></div>
+    </div>
+    <div class="row">
+      <div class="cell red-cell" id="3,1"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="3,2"></div>
+      <div class="cell red-cell" id="3,3"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="3,4"></div>
+      <div class="cell red-cell" id="3,5"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="3,6"></div>
+      <div class="cell red-cell" id="3,7"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="3,8"></div>
+    </div>
+    <div class="row">
+      <div class="cell white-cell" id="2,1"></div>
+      <div class="cell red-cell" id="2,2"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="2,3"></div>
+      <div class="cell red-cell" id="2,4"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="2,5"></div>
+      <div class="cell red-cell" id="2,6"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="2,7"></div>
+      <div class="cell red-cell" id="2,8"><div class="checker white-checker" draggable="true"></div></div>
+    </div>
+    <div class="row">
+      <div class="cell red-cell" id="1,1"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="1,2"></div>
+      <div class="cell red-cell" id="1,3"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="1,4"></div>
+      <div class="cell red-cell" id="1,5"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="1,6"></div>
+      <div class="cell red-cell" id="1,7"><div class="checker white-checker" draggable="true"></div></div>
+      <div class="cell white-cell" id="1,8"></div>
+    </div>
+  </div> 
+  <div class="info">
+    <div class="p2 Score">1</div>
+    <div id="turn">
+      <div id="title">PLAYER TURN</div>
+      <div class="turn"> WHITE!</div>
+    </div>
+    <div class="p1 Score">1</div>
+  </div>
+  
+  <!-- <div class="finish">
+    <p>Player One Wins!</p>
+    <div class="choice">
+      <div class="exit">Play again</div>
+      <div class="exit">Exit</div>
+    </div>
+  </div> -->
+  <script src="./script.js"></script>
+</body>
+</html>

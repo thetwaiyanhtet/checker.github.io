@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text{
+    @apply opacity-70 hover:opacity-100 hover:text-xl ;
+}
