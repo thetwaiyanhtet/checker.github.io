@@ -1,5 +1,8 @@
 let checkers = document.querySelectorAll(".checker");
+let whiteCheckers = document.querySelectorAll(".white-checker");
+let blackCheckers = document.querySelectorAll(".black-checker");
 let cells = document.querySelectorAll(".cell");
+let redCells = document.querySelectorAll(".red-cell");
 let turn = document.querySelector(".turn");
 let winner = document.querySelector(".winner");
 let currentChecker;
@@ -23,6 +26,9 @@ let gameWin = document.querySelector("#gameWin");
 let declare = document.querySelector(".declare");
 let p2 = document.querySelector(".p2");
 let p1 = document.querySelector(".p1");
+let sunset = document.querySelector(".sunset");
+let blueMount = document.querySelector(".blueMount");
+let wood = document.querySelector(".wood");
 let p1Score = 1;
 let p2Score = 1;
 
@@ -38,11 +44,11 @@ checkers.forEach((checker) => {
     let isKing = currentChecker.getAttribute("isKing") == "true" ? true : false;
     let currentCheckerColor = currentChecker.classList[1];
     if (currentPlayer == playerOne && currentCheckerColor == playerOne) {
-      (isKing)
+      isKing
         ? kingMoves(draggedCellID, draggedCheckerType)
         : whitePawnMoves(draggedCellID, draggedCheckerType);
     } else if (currentPlayer == playerTwo && currentCheckerColor == playerTwo) {
-      (isKing)
+      isKing
         ? kingMoves(draggedCellID, draggedCheckerType)
         : blackPawnMoves(draggedCellID, draggedCheckerType);
     }
@@ -98,14 +104,14 @@ function checkEnemyForWhiteChecker(checkerType) {
     let col = Number(id[1]);
     let childColor = leftCell.childNodes[0].classList[1];
     let nextmoveId = document.getElementById(`${row + 1},${col - 1}`);
-    (nextmoveId != null &&
-      !nextmoveId.hasChildNodes() &&
-      childColor != checkerType)
+    nextmoveId != null &&
+    !nextmoveId.hasChildNodes() &&
+    childColor != checkerType
       ? newPositon.push({
-        id: `${row + 1},${col - 1}`,
-        otherPawn: leftCell.children[0],
-        otherPawnColor: leftCell.childNodes[0].classList[1],
-      })
+          id: `${row + 1},${col - 1}`,
+          otherPawn: leftCell.children[0],
+          otherPawnColor: leftCell.childNodes[0].classList[1],
+        })
       : false;
   }
 
@@ -118,14 +124,14 @@ function checkEnemyForWhiteChecker(checkerType) {
     let col = Number(id[1]);
     let childColor = rightCell.childNodes[0].classList[1];
     let nextmoveId = document.getElementById(`${row + 1},${col + 1}`);
-    (nextmoveId != null &&
-      !nextmoveId.hasChildNodes() &&
-      childColor != checkerType)
+    nextmoveId != null &&
+    !nextmoveId.hasChildNodes() &&
+    childColor != checkerType
       ? newPositon.push({
-        id: `${row + 1},${col + 1}`,
-        otherPawn: rightCell.children[0],
-        otherPawnColor: rightCell.childNodes[0].classList[1],
-      })
+          id: `${row + 1},${col + 1}`,
+          otherPawn: rightCell.children[0],
+          otherPawnColor: rightCell.childNodes[0].classList[1],
+        })
       : false;
   }
 }
@@ -140,14 +146,14 @@ function checkEnemyForBlackChecker(checkerType) {
     let col = Number(id[1]);
     let childColor = leftCell.childNodes[0].classList[1];
     let nextmoveId = document.getElementById(`${row - 1},${col - 1}`);
-    (nextmoveId != null &&
-      !nextmoveId.hasChildNodes() &&
-      childColor != checkerType)
+    nextmoveId != null &&
+    !nextmoveId.hasChildNodes() &&
+    childColor != checkerType
       ? newPositon.push({
-        id: `${row - 1},${col - 1}`,
-        otherPawn: leftCell.children[0],
-        otherPawnColor: leftCell.childNodes[0].classList[1],
-      })
+          id: `${row - 1},${col - 1}`,
+          otherPawn: leftCell.children[0],
+          otherPawnColor: leftCell.childNodes[0].classList[1],
+        })
       : false;
   }
 
@@ -160,14 +166,14 @@ function checkEnemyForBlackChecker(checkerType) {
     let col = Number(id[1]);
     let childColor = rightCell.childNodes[0].classList[1];
     let nextmoveId = document.getElementById(`${row - 1},${col + 1}`);
-   ( nextmoveId != null &&
-      !nextmoveId.hasChildNodes() &&
-      childColor != checkerType)
+    nextmoveId != null &&
+    !nextmoveId.hasChildNodes() &&
+    childColor != checkerType
       ? newPositon.push({
-        id: `${row - 1},${col + 1}`,
-        otherPawn: rightCell.children[0],
-        otherPawnColor: rightCell.childNodes[0].classList[1],
-      })
+          id: `${row - 1},${col + 1}`,
+          otherPawn: rightCell.children[0],
+          otherPawnColor: rightCell.childNodes[0].classList[1],
+        })
       : false;
   }
 }
@@ -188,7 +194,7 @@ cells.forEach((cell) => {
       currentPlayer = currentCheckerColor == playerOne ? playerTwo : playerOne;
       if (currentCheckerColor == playerOne) {
         turn.innerHTML = "BLACK!";
-        (playWithComputer) ? setTimeout(computer, 1500): false;
+        playWithComputer ? setTimeout(computer, 1500) : false;
       } else {
         turn.innerHTML = "WHITE!";
       }
@@ -198,17 +204,20 @@ cells.forEach((cell) => {
       let newPositionIndex = newPositon.findIndex(
         (position) => position.id == cell.id
       );
-      let otherPawn = (newPositionIndex != -1) ? newPositon[newPositionIndex].otherPawn : undefined;
-      let isKing = currentChecker.getAttribute("isKing") == "true" ? true : false;
+      let otherPawn =
+        newPositionIndex != -1
+          ? newPositon[newPositionIndex].otherPawn
+          : undefined;
+      let isKing =
+        currentChecker.getAttribute("isKing") == "true" ? true : false;
       otherPawn.remove();
-      if(currentChecker.classList[1] == playerOne){
+      if (currentChecker.classList[1] == playerOne) {
         p1.innerText = p1Score;
         p1Score++;
-      }else{
+      } else {
         p2.innerText = p2Score;
         p2Score++;
-        
-      }  
+      }
       event.target.append(currentChecker);
       firstTwoMoves = [];
       initialAllowedMoves = [];
@@ -222,7 +231,7 @@ cells.forEach((cell) => {
           turn.innerHTML = "WHITE!";
         } else {
           turn.innerHTML = "BLACK!";
-          (playWithComputer) ? setTimeout(computer, 1500): false;
+          playWithComputer ? setTimeout(computer, 1500) : false;
         }
       } else if (currentCheckerColor == playerTwo) {
         isKing
@@ -231,7 +240,7 @@ cells.forEach((cell) => {
         currentPlayer = newPositon.length > 0 ? playerTwo : playerOne;
         if (newPositon.length > 0) {
           turn.innerHTML = "BLACK!";
-          (playWithComputer) ? setTimeout(computer, 1500): false;
+          playWithComputer ? setTimeout(computer, 1500) : false;
         } else {
           turn.innerHTML = "WHITE!";
         }
@@ -243,7 +252,7 @@ cells.forEach((cell) => {
       });
     }
     kingCheck(cell.id);
-    winCheck(); 
+    winCheck();
     stuckCheck();
     firstTwoMoves = [];
     initialAllowedMoves = [];
@@ -268,10 +277,12 @@ function removeHint() {
     let idArray = cell.id.split(",");
     let row = idArray[0];
     let col = idArray[1];
-    if (row % 2 != 0 && col % 2 != 0) cell.style.backgroundColor = "rgba(207, 53, 41, 1)";
+    if (row % 2 != 0 && col % 2 != 0)
+      cell.style.backgroundColor = "rgba(207, 53, 41, 1)";
     else if (row % 2 != 0 && col % 2 == 0) cell.style.backgroundColor = "white";
     else if (row % 2 == 0 && col % 2 != 0) cell.style.backgroundColor = "white";
-    else if (row % 2 == 0 && col % 2 == 0) cell.style.backgroundColor = "rgba(207, 53, 41, 1)";
+    else if (row % 2 == 0 && col % 2 == 0)
+      cell.style.backgroundColor = "rgba(207, 53, 41, 1)";
   });
 }
 
@@ -280,19 +291,27 @@ function kingCheck(id) {
   let idArray = id.split(",");
   let row = Number(idArray[0]);
   let col = Number(idArray[1]);
-  const kingColForWhiteChecker = [2,4,6,8];
-  const kingColForBlackChecker = [1,3,5,7];
-  
-  if (currentCheckerColor == playerOne && row == 8 && kingColForWhiteChecker.includes(col))
-    setTimeout(()=> currentChecker.setAttribute("isKing", true), 0.0003)
-  else if (currentCheckerColor == playerTwo && row == 1 && kingColForBlackChecker.includes(col))
-    setTimeout(()=> currentChecker.setAttribute("isKing", true), 0.0003)
+  const kingColForWhiteChecker = [2, 4, 6, 8];
+  const kingColForBlackChecker = [1, 3, 5, 7];
+
+  if (
+    currentCheckerColor == playerOne &&
+    row == 8 &&
+    kingColForWhiteChecker.includes(col)
+  )
+    setTimeout(() => currentChecker.setAttribute("isKing", true), 0.0003);
+  else if (
+    currentCheckerColor == playerTwo &&
+    row == 1 &&
+    kingColForBlackChecker.includes(col)
+  )
+    setTimeout(() => currentChecker.setAttribute("isKing", true), 0.0003);
 }
 
 function removeDraggable() {
-  checkers.forEach(checker => {
-    checker.setAttribute('draggable', 'false');
-  })
+  checkers.forEach((checker) => {
+    checker.setAttribute("draggable", "false");
+  });
 }
 
 function winCheck() {
@@ -306,7 +325,6 @@ function winCheck() {
     chessBoard.style.display = "none";
     mainMenu.style.display = "none";
     info.style.display = "none";
-
   } else if (whiteCheckers.length == 0) {
     winner.innerHTML = "Player Two Win!";
     removeDraggable();
@@ -316,7 +334,6 @@ function winCheck() {
     mainMenu.style.display = "none";
     info.style.display = "none";
   }
-  
 }
 
 function stuckCheck() {
@@ -325,7 +342,7 @@ function stuckCheck() {
   let blackCheckers = document.querySelectorAll(".black-checker");
   let moveable = false;
 
-  if(currentCheckerColor == playerTwo) {
+  if (currentCheckerColor == playerTwo) {
     for (let index = 0; index < whiteCheckers.length; index++) {
       firstTwoMoves = [];
       initialAllowedMoves = [];
@@ -337,8 +354,8 @@ function stuckCheck() {
         break;
       }
     }
-  
-    if(!moveable) {
+
+    if (!moveable) {
       winner.innerHTML = "Player Two Win!";
       removeDraggable();
       gameWin.play();
@@ -347,7 +364,6 @@ function stuckCheck() {
       mainMenu.style.display = "none";
       info.style.display = "none";
     }
-
   } else {
     for (let index = 0; index < blackCheckers.length; index++) {
       firstTwoMoves = [];
@@ -360,8 +376,8 @@ function stuckCheck() {
         break;
       }
     }
-  
-    if(!moveable) {
+
+    if (!moveable) {
       winner.innerHTML = "Player One Win!";
       removeDraggable();
       gameWin.play();
@@ -385,12 +401,14 @@ function computer() {
     initialAllowedMoves = [];
     newPositon = [];
     checker.dispatchEvent(dragStartEvent);
-    
+
     checker.style.opacity = "1";
     if (newPositon.length > 0) {
       let randomIndex = Math.floor(Math.random() * newPositon.length);
       checker.dispatchEvent(dragEndEvent);
-      document.getElementById(newPositon[randomIndex].id).dispatchEvent(dropEvent);
+      document
+        .getElementById(newPositon[randomIndex].id)
+        .dispatchEvent(dropEvent);
       kingCheck(newPositon[randomIndex].id);
       isThereEnemy = true;
       return;
@@ -409,28 +427,70 @@ function computer() {
       blackCheckers[randomChecker].style.opacity = "1";
     } while (initialAllowedMoves.length == 0);
     let randomIndex = Math.floor(Math.random() * initialAllowedMoves.length);
-    document.getElementById(initialAllowedMoves[randomIndex]).dispatchEvent(dropEvent);
+    document
+      .getElementById(initialAllowedMoves[randomIndex])
+      .dispatchEvent(dropEvent);
   }
 }
 
-pvp.addEventListener('click',()=>{
+pvp.addEventListener("click", () => {
   chessBoard.style.display = "flex";
   info.style.display = "flex";
   mainMenu.style.display = "none";
   menuAudio.play();
   playWithComputer = false;
+  chessBoard.style.boxShadow = '30px 30px 20px black';
+  chessBoard.style.transformStyle = 'preserve-3d';
+  chessBoard.style.transform = 'rotateZ(0deg)';
+  chessBoard.style.transition = '.8s ease-in-out transform';
 });
 
-pvc.addEventListener('click',()=>{
+pvc.addEventListener("click", () => {
   chessBoard.style.display = "flex";
   info.style.display = "flex";
   mainMenu.style.display = "none";
   menuAudio.play();
   playWithComputer = true;
+  chessBoard.style.boxShadow = '30px 30px 20px black';
+  chessBoard.style.transformStyle = 'preserve-3d';
+  chessBoard.style.transform = 'rotateZ(0deg)';
+  chessBoard.style.transition = '.8s ease-in-out transform';
 });
 
-let exitLink = document.getElementById("exitLink");
-    exitLink.addEventListener("click", () => {
-      window.close();
-    });
+// let exitLink = document.getElementById("exitLink");
+// exitLink.addEventListener("click", () => {
+//   window.close();
+// });
 
+sunset.addEventListener("mouseover",()=>{
+  document.body.style.background = "url(../img/redWall.png) no-repeat";
+  document.body.style.backgroundSize = "cover";
+  chessBoard.style.border = "10px solid rgba(243, 172, 89, 1)";
+  for (let index = 0; index < redCells.length; index++) {
+    redCells[index].style.backgroundColor = "#CF3529";
+  }
+});
+
+blueMount.addEventListener("mouseover",()=>{
+  document.body.style.background = "url(../img/blueWall.jpg) no-repeat";
+  document.body.style.backgroundSize = "cover";
+  chessBoard.style.border = "10px solid #3B4D7B";
+  for (let index = 0; index < redCells.length; index++) {
+    redCells[index].style.backgroundColor = "#36718F";
+  }
+  // chessBoard.style.transition = ".5s ease-in all";
+  for (let index = 0; index < cells.length; index++) {
+    cells.style.backgroundColor = "#36718F";
+    
+  }
+});
+
+wood.addEventListener("mouseover",()=>{
+  document.body.style.background = "url(../img/woodWall.jpg) no-repeat";
+  document.body.style.backgroundSize = "cover";
+  chessBoard.style.border = "10px solid #353541";
+  for (let index = 0; index < redCells.length; index++) {
+    redCells[index].style.backgroundColor = "#855138";
+  }
+  
+});

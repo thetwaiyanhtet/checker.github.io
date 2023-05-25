@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
 </head>
-<body>
+<body oncli>
   <div class="chess-board">
     <div class="row">
       <div class="cell white-cell" id="8,1"></div>
@@ -107,22 +107,22 @@
   <div class="declare">
     <p class="winner">Player One Wins!</p>
     <div class="choice">
-      <div class="playAgain">Play again</div>
-      <a href="" id="exitLink"><div class="exit">Exit</div></a>
+      <a href="" id="playAgain"><div class="playAgain">Play again</div></a>
+      <a href="../src/home.html" id="exitLink"><div class="exit">Exit</div></a>
     </div>
   </div>
   
   <div class="mainMenu">
     <p class="header">GAME MODE</p>
       <div class="people">
-          <ion-icon class="icon" name="person-outline"></ion-icon>
+          <img src="../img/human.png" alt="..." width="30px" height="30px">
           <p class="vs">VS</p>
-          <ion-icon class="icon" name="person-outline"></ion-icon>
+          <img src="../img/human.png" alt="..." width="30px" height="30px">
       </div>
       <div class="computer">
-          <ion-icon class="icon" name="person-outline"></ion-icon>
+          <img src="../img/human.png" alt="..." width="30px" height="30px">
           <p class="vs">VS</p>
-          <ion-icon class="icon" name="train-outline"></ion-icon>
+          <img src="../img/robot.png" alt="..." width="37px" height="37px">
       </div>
       <h2 id="theme">Customize Theme</h2>
       <div class="container">

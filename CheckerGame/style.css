@@ -5,7 +5,7 @@ body{
   justify-content: center;
   align-items: center;
   transform-style: preserve-3d;
-  background-image: url(../img/wall\ bg.png);
+  background-image: url(../img/redWall.png);
   background-repeat: no-repeat;
   background-size: cover; 
 }
@@ -16,12 +16,13 @@ body{
   border-radius: 20px;
   overflow: hidden;
   border: 10px solid rgba(243, 172, 89, 1);
+  transition: .4s ease-in-out all;
   box-shadow: 30px 30px 20px black;
     transform-style: preserve-3d;
      transform: rotateY(30deg);
      transform: rotateX(51deg)
                 rotateZ(43deg);
-    transition: .4s ease-in-out transform;
+    
 }
 
 .row{
@@ -50,7 +51,7 @@ body{
   height: 50px;
   border-radius: 50%;
   transform: scale(1);
-  box-shadow: 4px 4px 5px rgb(133, 120, 120),8px 8px 6px rgb(7, 227, 99);
+  box-shadow: 4px 4px 5px rgb(133, 120, 120);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: block;
@@ -233,7 +234,7 @@ body{
   align-items: center;
 }
 
-#exitLink{
+#exitLink,#playAgain{
   text-decoration: none;
 }
 
@@ -267,7 +268,7 @@ body{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 420px;
+  height: 440px;
   width: 320px;
   background-color: #d09c9c;
   align-items: center;
@@ -362,7 +363,7 @@ body{
 #theme{
   font-family: "Inria Sans";
   font-style: normal;
-  font-size: 26px;
+  font-size: 30px;
   background: linear-gradient(180deg, #eae9e0 20%, #eaedef 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -370,7 +371,7 @@ body{
   text-decoration-color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(19, 2, 2);
-  text-shadow: 2px 2px 2px rgb(143, 130, 130);
+  text-shadow: 2px 2px 2px rgb(24, 15, 15);
 }
 
 .container{
@@ -381,10 +382,14 @@ body{
 }
 
 .sunset{
-  background-color: #fa2525;
+  background-color: #CF3529;
 }
 
 .wood{
-  background-color: #918282;
+  background-color: #855138;
+}
+
+.blueMount{
+  background-color: #36718F;
 }
 
