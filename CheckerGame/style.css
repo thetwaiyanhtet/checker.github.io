@@ -16,12 +16,12 @@ body{
   border-radius: 20px;
   overflow: hidden;
   border: 10px solid rgba(243, 172, 89, 1);
-  /* box-shadow: 30px 30px 20px black;
+  box-shadow: 30px 30px 20px black;
     transform-style: preserve-3d;
      transform: rotateY(30deg);
      transform: rotateX(51deg)
                 rotateZ(43deg);
-    transition: .4s ease-in-out transform; */
+    transition: .4s ease-in-out transform;
 }
 
 .row{
@@ -192,6 +192,7 @@ body{
   font-family: 'Righteous', cursive;
   font-size: 1.5rem;
   border: 4px solid;
+  border-radius: 50%;
 }
 .p2{
   background-color: white;
@@ -201,17 +202,22 @@ body{
   background-color: #2A2A2A;
 }
 
+.winner{
+  font-size: 2.3rem;
+  font-family: 'Graduate', cursive;
+}
+
 .declare{
   position: absolute;
-  width: 350px;
-  height: 200px;
+  width: 380px;
+  height: 220px;
   background: linear-gradient(180deg, #d09c9c 0%, rgba(208, 156, 156, 0) 100%);
-  border: 1px solid #d09c9c;
+  border: 1px solid #130101;
   box-shadow: 1px 1px 2px black;
-  border-radius: 30px;
+  border-radius:15px;
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   display: none;
@@ -225,13 +231,17 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-.exit{
-  font-family:sans-serif;
-  width: 100px;
+
+#exitLink{
+  text-decoration: none;
+}
+
+.exit,.playAgain{
+  font-family: 'Graduate', cursive;
+  width: 110px;
   height: 40px;
-  background-color: black;
+  background-color: rgb(65, 190, 86);
   color: white;
   margin: 10px;
   font-size:1rem;
@@ -239,21 +249,17 @@ body{
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  border: 2px solid black;
   transition: all linear 0.3s;
 }
-.exit:hover{
-  transform: scale(1.2);
+.exit{
+  background-color: #fa2525;
+  color: white;
 }
-/* body {
-  background-image: url(../CheckerGame.github.io-main/img/chessBG-transformed.jpeg);background-size: cover;
-  background-repeat: no-repeat;
-
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
-} */
+.exit:hover,.playAgain:hover{
+  transform: scale(1.1);
+  border: 2px solid honeydew;
+}
 
 .mainMenu {
   margin-left: 130px;
@@ -261,8 +267,8 @@ body{
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 400px;
-  width: 300px;
+  height: 420px;
+  width: 320px;
   background-color: #d09c9c;
   align-items: center;
   justify-content: center;
@@ -289,8 +295,8 @@ body{
   
 }
 .people {
-  width: 120px;
-  height: 40px;
+  width: 140px;
+  height: 45px;
   background: #fa2525;
   border-radius: 10px;
   display: flex;
@@ -301,19 +307,19 @@ body{
   color: black;
 }
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 .vs {
   font-family: "Irish Grover";
-  font-size: small;
+  font-size: x-large;
   color: white;
   padding: 0px 10px;
 }
 
 .computer {
-  width: 120px;
-  height: 40px;
+  width: 140px;
+  height: 45px;
   background: #fa2525;
   border-radius: 10px;
   display: flex;
@@ -324,7 +330,7 @@ body{
   border: 2px solid;
 }
 .back {
-  font-family: "Inria Sans";
+  font-family: 'Graduate', cursive;
   width: 148px;
   height: 30px;
   margin-top: 40px;
@@ -337,11 +343,7 @@ body{
   color: rgb(203, 203, 210);
   transition: all linear .3s;
 }
-#exit{
-  color: white;
-  font-family: "Inria Sans";
-  text-decoration: underline;
-}
+
 .people:hover{
   transform: scale(1.2);
 }
@@ -354,12 +356,12 @@ body{
   height: 50px;
   background-color: cornflowerblue;
   border-radius: 10px;
+  border: 2px solid;
 }
 
 #theme{
   font-family: "Inria Sans";
   font-style: normal;
-  
   font-size: 26px;
   background: linear-gradient(180deg, #eae9e0 20%, #eaedef 100%);
   -webkit-background-clip: text;
@@ -367,8 +369,8 @@ body{
   background-clip: text;
   text-decoration-color: transparent;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  text-shadow: 2px 2px 2px black;
+  -webkit-text-stroke-color: rgb(19, 2, 2);
+  text-shadow: 2px 2px 2px rgb(143, 130, 130);
 }
 
 .container{
@@ -386,7 +388,3 @@ body{
   background-color: #918282;
 }
 
-.opt{
-  display: flex;
-  align-items: center;
-}

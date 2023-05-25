@@ -19,7 +19,6 @@
       <ul class="uppercase font-mono flex flex-col items-center justify-center space-y-3 text-2xl">
         <a href="../CheckerGame/checker.html"><li><p class="text sound">play game</p></li></a>
         <a href="about.html"><li><p class="text sound">about</p></li></a>
-        <a href=""><li><p class="text sound" id="exit">exit game</p></li></a>
       </ul>
     </div>
   </main>
@@ -31,13 +30,7 @@
       sound.addEventListener("mouseover",()=>{
       audio.play();
     });
-    })
-
-    let exit = document.querySelector("#exit");
-    exit.addEventListener('click',()=>{
-    window.close();
-    alert('ok')
-  });
+    });
   </script>
 </body>
 </html>

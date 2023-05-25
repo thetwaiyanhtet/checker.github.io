@@ -302,9 +302,9 @@ function winCheck() {
     winner.innerHTML = "Player One Win!";
     removeDraggable();
     gameWin.play();
+    declare.style.display = "block";
     chessBoard.style.display = "none";
     mainMenu.style.display = "none";
-    declare.style.display = "block";
     info.style.display = "none";
 
   } else if (whiteCheckers.length == 0) {
@@ -345,6 +345,7 @@ function stuckCheck() {
       declare.style.display = "block";
       chessBoard.style.display = "none";
       mainMenu.style.display = "none";
+      info.style.display = "none";
     }
 
   } else {
@@ -367,6 +368,7 @@ function stuckCheck() {
       declare.style.display = "block";
       chessBoard.style.display = "none";
       mainMenu.style.display = "none";
+      info.style.display = "none";
     }
   }
 }
@@ -427,4 +429,8 @@ pvc.addEventListener('click',()=>{
   playWithComputer = true;
 });
 
+let exitLink = document.getElementById("exitLink");
+    exitLink.addEventListener("click", () => {
+      window.close();
+    });
 
