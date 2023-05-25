@@ -1,7 +1,7 @@
-var checkers = document.querySelectorAll(".checker");
-var cells = document.querySelectorAll(".cell");
-var turn = document.querySelector(".turn");
-var winner = document.querySelector(".winner");
+let checkers = document.querySelectorAll(".checker");
+let cells = document.querySelectorAll(".cell");
+let turn = document.querySelector(".turn");
+let winner = document.querySelector(".winner");
 let currentChecker;
 let currentCheckerDraggedCell;
 let firstTwoMoves = [];
@@ -16,9 +16,15 @@ let pvp = document.querySelector(".people");
 let pvc = document.querySelector(".computer");
 let chessBoard = document.querySelector(".chess-board");
 let info = document.querySelector(".info");
-let heroSection = document.querySelector(".hero-section");
-let dropAudio = document.querySelector(".dropAudio");
-let menuAudio = document.querySelector(".menuAudio");
+let mainMenu = document.querySelector(".mainMenu");
+let dropAudio = document.querySelector("#dropAudio");
+let menuAudio = document.querySelector("#menuAudio");
+let gameWin = document.querySelector("#gameWin");
+let declare = document.querySelector(".declare");
+let p2 = document.querySelector(".p2");
+let p1 = document.querySelector(".p1");
+let p1Score = 1;
+let p2Score = 1;
 
 checkers.forEach((checker) => {
   checker.setAttribute("isKing", false);
@@ -170,6 +176,7 @@ cells.forEach((cell) => {
   cell.addEventListener("dragover", (event) => event.preventDefault());
 
   cell.addEventListener("drop", (event) => {
+    dropAudio.play();
     let currentCheckerColor = currentChecker.classList[1];
     let isThereOtherPosition = newPositon.some(
       (position) => position.id == cell.id
@@ -179,10 +186,9 @@ cells.forEach((cell) => {
     if (initialAllowedMoves.includes(cell.id)) {
       event.target.append(currentChecker);
       currentPlayer = currentCheckerColor == playerOne ? playerTwo : playerOne;
-      // turn.innerHTML = (currentCheckerColor == playerOne) ? "Player Two Turn!" : "Player One Turn!";
       if (currentCheckerColor == playerOne) {
         turn.innerHTML = "BLACK!";
-        setTimeout(computer, 1500);
+        (playWithComputer) ? setTimeout(computer, 1500): false;
       } else {
         turn.innerHTML = "WHITE!";
       }
@@ -195,6 +201,14 @@ cells.forEach((cell) => {
       let otherPawn = (newPositionIndex != -1) ? newPositon[newPositionIndex].otherPawn : undefined;
       let isKing = currentChecker.getAttribute("isKing") == "true" ? true : false;
       otherPawn.remove();
+      if(currentChecker.classList[1] == playerOne){
+        p1.innerText = p1Score;
+        p1Score++;
+      }else{
+        p2.innerText = p2Score;
+        p2Score++;
+        
+      }  
       event.target.append(currentChecker);
       firstTwoMoves = [];
       initialAllowedMoves = [];
@@ -204,22 +218,20 @@ cells.forEach((cell) => {
           ? kingMoves(cell.id, currentCheckerColor)
           : whitePawnMoves(cell.id, currentCheckerColor);
         currentPlayer = newPositon.length > 0 ? playerOne : playerTwo;
-        // turn.innerHTML = (newPositon.length > 0) ? "Player One Turn!": "Player Two Turn!";
         if (newPositon.length > 0) {
           turn.innerHTML = "WHITE!";
         } else {
           turn.innerHTML = "BLACK!";
-          setTimeout(computer, 1500);
+          (playWithComputer) ? setTimeout(computer, 1500): false;
         }
       } else if (currentCheckerColor == playerTwo) {
         isKing
           ? kingMoves(cell.id, currentCheckerColor)
           : blackPawnMoves(cell.id, currentCheckerColor);
         currentPlayer = newPositon.length > 0 ? playerTwo : playerOne;
-        // turn.innerHTML = (newPositon.length > 0) ? "Player Two Turn!": "Player One Turn!";
         if (newPositon.length > 0) {
           turn.innerHTML = "BLACK!";
-          setTimeout(computer, 1500);
+          (playWithComputer) ? setTimeout(computer, 1500): false;
         } else {
           turn.innerHTML = "WHITE!";
         }
@@ -289,9 +301,20 @@ function winCheck() {
   if (blackCheckers.length == 0) {
     winner.innerHTML = "Player One Win!";
     removeDraggable();
+    gameWin.play();
+    chessBoard.style.display = "none";
+    mainMenu.style.display = "none";
+    declare.style.display = "block";
+    info.style.display = "none";
+
   } else if (whiteCheckers.length == 0) {
     winner.innerHTML = "Player Two Win!";
     removeDraggable();
+    gameWin.play();
+    declare.style.display = "block";
+    chessBoard.style.display = "none";
+    mainMenu.style.display = "none";
+    info.style.display = "none";
   }
   
 }
@@ -318,6 +341,10 @@ function stuckCheck() {
     if(!moveable) {
       winner.innerHTML = "Player Two Win!";
       removeDraggable();
+      gameWin.play();
+      declare.style.display = "block";
+      chessBoard.style.display = "none";
+      mainMenu.style.display = "none";
     }
 
   } else {
@@ -336,6 +363,10 @@ function stuckCheck() {
     if(!moveable) {
       winner.innerHTML = "Player One Win!";
       removeDraggable();
+      gameWin.play();
+      declare.style.display = "block";
+      chessBoard.style.display = "none";
+      mainMenu.style.display = "none";
     }
   }
 }
@@ -380,17 +411,20 @@ function computer() {
   }
 }
 
-
 pvp.addEventListener('click',()=>{
   chessBoard.style.display = "flex";
   info.style.display = "flex";
-  heroSection.style.display = "none";
+  mainMenu.style.display = "none";
   menuAudio.play();
+  playWithComputer = false;
 });
 
 pvc.addEventListener('click',()=>{
   chessBoard.style.display = "flex";
   info.style.display = "flex";
-  heroSection.style.display = "none";
+  mainMenu.style.display = "none";
   menuAudio.play();
+  playWithComputer = true;
 });
+
+

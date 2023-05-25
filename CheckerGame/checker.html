@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CHECKER</title>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -97,39 +97,50 @@
     </div>
   </div> 
   <div class="info">
-    <div class="p2 Score">1</div>
+    <div class="p2 Score">0</div>
     <div id="turn">
       <div id="title">PLAYER TURN</div>
       <div class="turn"> WHITE!</div>
     </div>
-    <div class="p1 Score">1</div>
+    <div class="p1 Score">0</div>
   </div>
   
-  <!-- <div class="finish">
-    <p>Player One Wins!</p>
+  <div class="declare">
+    <p class="winner">Player One Wins!</p>
     <div class="choice">
       <div class="exit">Play again</div>
       <div class="exit">Exit</div>
     </div>
-  </div> -->
+  </div>
   
-  <div class="hero-section">
+  <div class="mainMenu">
     <p class="header">GAME MODE</p>
       <div class="people">
           <ion-icon class="icon" name="person-outline"></ion-icon>
           <p class="vs">VS</p>
           <ion-icon class="icon" name="person-outline"></ion-icon>
       </div>
-    
-    <div class="computer">
-        <ion-icon class="icon" name="person-outline"></ion-icon>
-        <p class="vs">VS</p>
-        <ion-icon class="icon" name="train-outline"></ion-icon>
-    </div>
-       <a href="../src/home.html"> <p class="back"><u>BACK TO MENU</u></p></a>
+      <div class="computer">
+          <ion-icon class="icon" name="person-outline"></ion-icon>
+          <p class="vs">VS</p>
+          <ion-icon class="icon" name="train-outline"></ion-icon>
+      </div>
+      <h2 id="theme">Customize Theme</h2>
+      <div class="container">
+        <div class="sample sunset"></div>
+        <div class="sample blueMount"></div>
+        <div class="sample wood"></div>
+      </div>
+      <div class="opt">
+        <a href="../src/home.html"><p class="back">BACK TO MENU</p></a>
+        <a href=""><p id="exit">Exit</p></a>
+      </div>
 </div>
-<audio src="./rclick-13693.mp3" class="dropAudio"></audio>
-<audio src="./click-for-game-menu-131903.mp3" class="menuAudio"></audio>
+
+
+<audio src="../audios/rclick-13693.mp3" id="dropAudio"></audio>
+<audio src="../audios/click-for-game-menu-131903.mp3" id="menuAudio"></audio>
+<audio src="../audios/game-level-complete-143022.mp3" id="gameWin"></audio>
   <script src="./script.js"></script>
 </body>
 </html>

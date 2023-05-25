@@ -1,1 +1,0 @@
-# CheckerGame.github.io

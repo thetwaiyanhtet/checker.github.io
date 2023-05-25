@@ -5,17 +5,23 @@ body{
   justify-content: center;
   align-items: center;
   transform-style: preserve-3d;
-  background-image: url(./img/wall\ bg.png);
+  background-image: url(../img/wall\ bg.png);
   background-repeat: no-repeat;
   background-size: cover; 
 }
 
 .chess-board{
-  display: none;
+  display: flex;
   flex-direction: column;
   border-radius: 20px;
   overflow: hidden;
   border: 10px solid rgba(243, 172, 89, 1);
+  /* box-shadow: 30px 30px 20px black;
+    transform-style: preserve-3d;
+     transform: rotateY(30deg);
+     transform: rotateX(51deg)
+                rotateZ(43deg);
+    transition: .4s ease-in-out transform; */
 }
 
 .row{
@@ -44,9 +50,10 @@ body{
   height: 50px;
   border-radius: 50%;
   transform: scale(1);
-  box-shadow: 4px 4px 5px rgb(26, 3, 3);
+  box-shadow: 4px 4px 5px rgb(133, 120, 120),8px 8px 6px rgb(7, 227, 99);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  display: block;
 }
 
 .checker.dragged:where(.checker){
@@ -159,6 +166,9 @@ body{
   font-size: 2rem;
   border-radius: 20px;
 }
+.turn{
+  letter-spacing: 3px;
+}
 #title{
   font-size:1.5rem;
 }
@@ -191,20 +201,20 @@ body{
   background-color: #2A2A2A;
 }
 
-.finish{
+.declare{
   position: absolute;
   width: 350px;
   height: 200px;
   background: linear-gradient(180deg, #d09c9c 0%, rgba(208, 156, 156, 0) 100%);
   border: 1px solid #d09c9c;
-    box-shadow: 1px 1px 2px black;
+  box-shadow: 1px 1px 2px black;
   border-radius: 30px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  display: block;
+  display: none;
 }
 .finish p{
   font-family:sans-serif;
@@ -245,13 +255,13 @@ body{
   overflow-y: hidden;
 } */
 
-.hero-section {
-  position: absolute;
+.mainMenu {
+  margin-left: 130px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 350px;
+  height: 400px;
   width: 300px;
   background-color: #d09c9c;
   align-items: center;
@@ -276,6 +286,7 @@ body{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   text-shadow: 2px 2px 2px black;
+  
 }
 .people {
   width: 120px;
@@ -319,15 +330,63 @@ body{
   margin-top: 40px;
   margin-bottom: 30px;
   color: white;
+  text-decoration: underline;
 }
 .back:hover{
   font-size: larger;
-  color: gray;
+  color: rgb(203, 203, 210);
   transition: all linear .3s;
+}
+#exit{
+  color: white;
+  font-family: "Inria Sans";
+  text-decoration: underline;
 }
 .people:hover{
   transform: scale(1.2);
 }
 .computer:hover{
   transform: scale(1.2);
+}
+
+.sample{
+  width: 50px;
+  height: 50px;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+}
+
+#theme{
+  font-family: "Inria Sans";
+  font-style: normal;
+  
+  font-size: 26px;
+  background: linear-gradient(180deg, #eae9e0 20%, #eaedef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 2px 2px 2px black;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.sunset{
+  background-color: #fa2525;
+}
+
+.wood{
+  background-color: #918282;
+}
+
+.opt{
+  display: flex;
+  align-items: center;
 }
